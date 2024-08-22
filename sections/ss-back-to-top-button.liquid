@@ -1,0 +1,216 @@
+<style>
+  .ss-back-to-top-arrow-{{ section.id }} {
+    position: fixed;
+    bottom: var(--y-dst-to-edge);
+    background-color: var(--bg-color, #fff);
+    border-radius: 50%;
+    border: 1px solid var(--border-color, #000);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    z-index: 999;
+    display: none;
+    opacity: 0;
+    
+  }
+  .ss-back-to-top-arrow-{{ section.id }}:hover {
+    scale: 1.1;
+  }
+  @media screen and (max-width: 749.9px) {
+    .ss-back-to-top-arrow-{{ section.id }}-hide-on-mobile {
+      display: none;
+    }
+  }
+</style>
+
+<button
+  class="
+    ss-back-to-top-arrow-{{ section.id }}
+    {% if section.settings.hide_on_mobile %}
+      ss-back-to-top-arrow-{{ section.id }}-hide-on-mobile
+    {% endif %}
+  "
+  id="ss-back-to-top-arrow-{{ section.id }}"
+  style="
+    --x-dst-to-edge: {{ section.settings.horizontal_dst_to_edge }}px;
+    {% if section.settings.pos == 'left' %}
+      left: var(--x-dst-to-edge);
+    {% elsif section.settings.pos == 'center' %}
+      left: 50%;
+      transform: translateX(-50%);
+    {% elsif section.settings.pos == 'right' %}
+      right: var(--x-dst-to-edge);
+    {% endif %}
+
+    --y-dst-to-edge: {{ section.settings.vertical_dst_to_edge }}px;
+    --border-color: {{ section.settings.border_color }};
+    --bg-color: {{ section.settings.bg_color }};
+
+    width: {{ section.settings.button_size }}px;
+    height: {{ section.settings.button_size }}px;
+  "
+  aria-label="Back to top"
+  type="button"
+>
+  <svg
+    style="
+      position: absolute; /* new */
+      top: 50%; /* new */
+      left: 50%; /* new */
+      transform: translate(-50%, -50%); /* new */
+      color: {{ section.settings.arrow_color }};
+      width: {{ section.settings.arrow_size }}px;
+      height: {{ section.settings.arrow_size }}px;
+    "
+    stroke="currentColor"
+    fill="currentColor"
+    stroke-width="0"
+    viewBox="0 0 512 512"
+    height="1em"
+    width="1em"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M256 217.9L383 345c9.4 9.4 24.6 9.4 33.9 0 9.4-9.4 9.3-24.6 0-34L273 167c-9.1-9.1-23.7-9.3-33.1-.7L95 310.9c-4.7 4.7-7 10.9-7 17s2.3 12.3 7 17c9.4 9.4 24.6 9.4 33.9 0l127.1-127z"></path>
+  </svg>
+</button>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var backToTopArrow = document.getElementById(
+      'ss-back-to-top-arrow-{{ section.id }}'
+    );
+    backToTopArrow.addEventListener('click', function () {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    });
+    // it only shows when the view is 20% from bottom of the page:
+    const precentOfPage = 1 - {{ section.settings.show_when_precent_of_page }} / 100;
+    if(precentOfPage === 1) {
+      backToTopArrow.style.display = 'block';
+      backToTopArrow.style.opacity = '1';
+    } else {
+      window.addEventListener('scroll', function () {
+      if (
+        window.scrollY >
+        precentOfPage * (document.body.scrollHeight - window.innerHeight)
+      ) {
+        backToTopArrow.style.display = 'block';
+        backToTopArrow.style.opacity = '1';
+      } else {
+        backToTopArrow.style.display = 'none';
+        backToTopArrow.style.opacity = '0';
+      }
+    });
+    }
+
+  });
+</script>
+
+{% schema %}
+{
+  "name": "SS - Back to top arrow",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "hide_on_mobile",
+      "label": "Hide on mobile?",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "show_when_precent_of_page",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Show when the view is X% from bottom of the page",
+      "default": 30,
+      "info": "0% means it will always show, 100% means it will never show"
+    },
+    {
+      "type": "select",
+      "id": "pos",
+      "label": "Position",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "right"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default":"#F4F2F2"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border color",
+      "default": "#CEC5C5"
+    },
+    {
+      "type": "color",
+      "id": "arrow_color",
+      "label": "Arrow color",
+      "default": "#333333"
+    },
+    {
+      "type": "range",
+      "id": "button_size",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Button size",
+      "default": 54
+    },
+    {
+      "type": "range",
+      "id": "arrow_size",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Arrow size",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "horizontal_dst_to_edge",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Horizontal padding",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "vertical_dst_to_edge",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Vertical padding",
+      "default": 20
+    }
+  ],
+  "presets": [
+    {
+      "name": "SS - Back to top button"
+    }
+  ]
+}
+{% endschema %}

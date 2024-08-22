@@ -1,0 +1,361 @@
+<style>
+  .popup-{{ section.id }} {
+    position: fixed;
+    z-index: 9999;
+    overflow: hidden;
+    max-width: 340px;
+  }
+
+  .popup-{{ section.id }} {
+    @media (min-width: 750px) {
+      max-width: {{ section.settings.max_width }}px;
+    }
+  }
+
+  .popup-{{ section.id }} .popup-text,
+  .popup-{{ section.id }} .popup-text p {
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+
+  .btn-{{ section.id }} {
+    padding: 10px 20px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    width: fit-content;
+  }
+  .btn-wrapper-{{ section.id }} {
+    display: flex;
+    gap: 12px;
+  }
+</style>
+
+<div
+  class="popup-{{ section.id }}"
+  style="
+    background-color: {{ section.settings.background_color }};
+
+    border-radius: {{ section.settings.border_radius }}px;
+    padding: {{ section.settings.vertical_padding }}px {{ section.settings.horizontal_padding }}px;
+
+    {% if section.settings.placement == 'bottom-left' %}
+      bottom: 20px;
+      left: 20px;
+    {% elsif section.settings.placement == 'bottom-right' %}
+      bottom: 20px;
+      right: 20px;
+    {% endif %}
+
+    {% if section.settings.enable_shadow %}
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    {% endif %}
+  "
+>
+  {% if section.settings.text != blank %}
+    <div
+      class="popup-text"
+      style="color: {{ section.settings.text_color }};font-size: {{ section.settings.text_size }}px;"
+    >
+      {{ section.settings.text }}
+    </div>
+  {% endif %}
+  <div class="btn-wrapper-{{ section.id }}">
+    {% for block in section.blocks %}
+      {% if block.type == 'accept_button' or block.type == 'decline_button' %}
+      {% endif %}
+      {% if block.settings.redirect_url != blank %}
+        <a
+          class="btn-{{ section.id }}"
+          href="{{ block.settings.redirect_url }}"
+          style="
+            background-color: {{ block.settings.button_color }};
+            color: {{ block.settings.button_text_color }};
+            border-color: {{ block.settings.button_border_color }};
+            border-width: {{ block.settings.button_border_width }}px;
+            border-style: solid;
+            border-radius: {{ block.settings.button_border_radius }}px;
+          "
+        >
+          {{ block.settings.button_text }}
+        </a>
+      {% else %}
+        <div
+          class="btn-{{ section.id }}"
+          data-button-type="{{ block.type }}"
+          style="
+            background-color: {{ block.settings.button_color }};
+            color: {{ block.settings.button_text_color }};
+            border-color: {{ block.settings.button_border_color }};
+            border-width: {{ block.settings.button_border_width }}px;
+            border-style: solid;
+            border-radius: {{ block.settings.button_border_radius }}px;
+          "
+        >
+          {{ block.settings.button_text }}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+  // handle accept or decline button click:
+  (function () {
+    // check if cookie_consent cookie is set:
+    const cookieConsent = document.cookie
+      .split('; ')
+      .find((row) => row.startsWith('cookie_consent='));
+    if (cookieConsent && cookieConsent.split('=')[1] == '1') {
+      // cookie_consent cookie is set, hide popup:
+      document.querySelector('.popup-{{ section.id }}').style.display = 'none';
+      return;
+    }
+    const allButtons = document.querySelectorAll('.btn-{{ section.id }}');
+    allButtons.forEach((button) => {
+      button.addEventListener('click', (event) => {
+        const buttonType = event.target.dataset.buttonType;
+        if (buttonType == 'accept_button') {
+          // expire in 30 days:
+          const date = new Date();
+          date.setTime(date.getTime() + 30 * 24 * 60 * 60 * 1000);
+          document.cookie = `cookie_consent=1; expires=${date.toUTCString()}; path=/`;
+        } else if (buttonType == 'decline_button') {
+          document.cookie = 'cookie_consent=0; path=/';
+        }
+        // hide popup:
+        document.querySelector('.popup-{{ section.id }}').style.display =
+          'none';
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "SS - Cookie Banner",
+  "settings": [
+    {
+      "type":"header",
+      "content":"Cookie acceptance last 30 days.",
+      "info":"Hide an unhide section to display again."
+    },
+    {
+      "type":"header",
+      "content":"Settings"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "label": "Text size",
+      "default": 16,
+      "min": 10,
+      "max": 50,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>🍪 We use cookies to ensure the best possible user experience. Please agree to our cookies policy by clicking 'Accept'.</p>"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max width",
+      "default": 400,
+      "min": 0,
+      "max": 1000,
+      "step": 20,
+      "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Border radius",
+      "default": 24,
+      "min": 0,
+      "max": 80,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "vertical_padding",
+      "label": "Vertical padding",
+      "default": 20,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "horizontal_padding",
+      "label": "Horizontal padding",
+      "default": 20,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "placement",
+      "label": "Placement",
+      "default": "bottom-left",
+      "options": [
+        {
+          "value": "bottom-left",
+          "label": "Bottom Left"
+        },
+        {
+          "value": "bottom-right",
+          "label": "Bottom Right"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_shadow",
+      "label": "Enable shadow",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "SS - Cookie Banner",
+      "blocks": [
+        {
+          "type": "accept_button"
+        },
+        {
+          "type": "decline_button"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 2,
+  "blocks": [
+    {
+      "type": "accept_button",
+      "name": "Accept button",
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "Accept"
+        },
+        {
+          "type": "color",
+          "id": "button_color",
+          "label": "Button Color",
+          "default": "#d99d42"
+        },
+        {
+          "type": "color",
+          "id": "button_text_color",
+          "label": "Button Text Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "button_border_color",
+          "label": "Button Border Color",
+          "default": "#000000"
+        },
+        {
+          "type": "range",
+          "id": "button_border_width",
+          "label": "Button Border Width",
+          "min": 0,
+          "max": 10,
+          "unit": "px",
+          "step": 1,
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "button_border_radius",
+          "label": "Button Border Radius",
+          "min": 0,
+          "max": 100,
+          "unit": "px",
+          "step": 1,
+          "default": 24
+        }
+      ]
+    },
+    {
+      "type": "decline_button",
+      "name": "Decline button",
+      "settings": [
+        {
+          "type": "url",
+          "id": "redirect_url",
+          "label": "Decline Redirect URL"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "Decline"
+        },
+        {
+          "type": "color",
+          "id": "button_color",
+          "label": "Button Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "button_text_color",
+          "label": "Button Text Color",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "button_border_color",
+          "label": "Button Border Color",
+          "default": "#000000"
+        },
+        {
+          "type": "range",
+          "id": "button_border_width",
+          "label": "Button Border Width",
+          "min": 0,
+          "max": 10,
+          "unit": "px",
+          "step": 1,
+          "default": 1
+        },
+        {
+          "type": "range",
+          "id": "button_border_radius",
+          "label": "Button Border Radius",
+          "min": 0,
+          "max": 100,
+          "unit": "px",
+          "step": 1,
+          "default": 24
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

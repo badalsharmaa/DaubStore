@@ -1,0 +1,364 @@
+{% comment %}
+---------------------------------------------------------
+Copyright © 2023 Section Store. All rights reserved.
+Unauthorized copying, modification, distribution, or use
+of this code or any portion of it, is strictly prohibited.
+Violators will be prosecuted to the fullest extent of the law.
+For inquiries or permissions, contact daniel@section.store
+---------------------------------------------------------
+{% endcomment %}
+
+{%- liquid 
+  assign padding_horizontal = section.settings.padding_horizontal
+  assign padding_horizontal_mobile = section.settings.padding_horizontal_mobile
+  assign padding_top = section.settings.padding_top
+  assign padding_bottom = section.settings.padding_bottom
+  assign border_color = section.settings.border_color
+  assign border_thickness = section.settings.border_thickness
+  assign margin_top = section.settings.margin_top
+  assign margin_bottom = section.settings.margin_bottom
+  assign background_color = section.settings.background_color
+  assign background_gradient = section.settings.background_gradient
+  assign full_width = section.settings.full_width
+  assign content_width = section.settings.content_width
+
+  assign wave_height_mobile = section.settings.wave_height_mobile
+  assign wave_height = section.settings.wave_height
+  assign wave_color = section.settings.wave_color
+  assign wave_animation = section.settings.wave_animation
+  assign wave_rotate = section.settings.wave_rotate
+-%}
+
+{%- style -%}
+  
+  .section-{{ section.id }} {
+    border-top: solid {{ border_color }} {{ border_thickness }}px;
+    border-bottom: solid {{ border_color }} {{ border_thickness }}px;
+    margin-top: {{ margin_top | times: 0.75 | round: 0 }}px;
+    margin-bottom: {{ margin_bottom | times: 0.75 | round: 0 }}px;
+  }
+  
+  .section-{{ section.id }}-settings {
+    margin: 0 auto;
+    padding-top: {{ padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ padding_bottom | times: 0.75 | round: 0 }}px;
+    padding-left: {{ padding_horizontal_mobile }}rem;
+    padding-right: {{ padding_horizontal_mobile }}rem;
+  }
+
+  .wave-item-{{ section.id }} svg {
+    color: {{ wave_color }};
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    max-height: {{ wave_height_mobile }}px;
+  }
+
+  .wave-parallax2-{{ section.id }} > use {
+    opacity: .4;
+  }
+
+  .wave-parallax3-{{ section.id }} > use {
+    opacity: .3;
+  }
+
+  .wave-parallax4-{{ section.id }} > use {
+    opacity: .2;
+  }
+  
+  @media(min-width: 1024px) {
+
+    .section-{{ section.id }} {
+      margin-top: {{ margin_top }}px;
+      margin-bottom: {{ margin_bottom }}px;
+    }
+    
+    .section-{{ section.id }}-settings {
+      padding: 0 5rem;
+      padding-top: {{ padding_top }}px;
+      padding-bottom: {{ padding_bottom }}px;
+      padding-left: {{ padding_horizontal }}rem;
+      padding-right: {{ padding_horizontal }}rem;
+    }
+
+    .wave-item-{{ section.id }} svg {
+      max-height: {{ wave_height }}px;
+    }
+  }
+  
+{%- endstyle -%}
+
+{% unless full_width %}
+  <style>
+    .section-{{ section.id }}-settings {
+      max-width: {{ content_width }}rem;
+    }
+  </style>
+{% endunless %}
+
+{% if wave_rotate %}
+  <style>
+    .wave-item-{{ section.id }} {
+      transform: rotate(180deg);
+    }
+  </style>
+{% endif %}
+
+{% if wave_animation %}
+  <style>
+    .wave-parallax1-{{ section.id }} > use {
+      animation: move-forever1{{ section.id}} 10s linear infinite;
+    }
+    
+    .wave-parallax2-{{ section.id }} > use {
+      animation: move-forever2{{ section.id}} 10s linear infinite;
+    }
+    
+    .wave-parallax3-{{ section.id }} > use {
+      animation: move-forever3{{ section.id}} 10s linear infinite;
+    }
+    
+    .wave-parallax3-{{ section.id }} > use {
+      animation: move-forever4{{ section.id}} 10s linear infinite;
+    }
+
+    @keyframes move-forever1{{ section.id}} {
+      0% {
+          transform: translate(85px);
+      }
+      100% {
+          transform: translate(-90px);
+      }
+    }
+
+    @keyframes move-forever2{{ section.id}} {
+      0% {
+          transform: translate(-90px);
+      }
+      100% {
+          transform: translate(85px);
+      }
+    }
+
+    @keyframes move-forever3{{ section.id}} {
+      0% {
+          transform: translate(85px);
+      }
+      100% {
+          transform: translate(-90px);
+      }
+    }
+
+    @keyframes move-forever4{{ section.id}} {
+      0% {
+          transform: translate(-90px);
+      }
+      100% {
+          transform: translate(85px);
+      }
+    }
+  </style>
+{% endif %}
+
+<div class="section-{{ section.id }} wave-{{ section.id }}" style="background-color:{{ background_color }}; background-image: {{ background_gradient }};">
+    <div class="section-{{ section.id }}-settings">
+      <div class="wave-item-{{ section.id }}">
+        <svg class="waves-animated-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none">
+          <defs>
+            <path id="gentle-wave" d="M-160 44c30 0
+              58-18 88-18s
+              58 18 88 18
+              58-18 88-18
+              58 18 88 18
+              v44h-352z"></path>
+          </defs>
+          <g class="wave-parallax1-{{ section.id }}">
+            <use xlink:href="#gentle-wave" x="50" y="3" fill="currentColor"></use>
+          </g>
+          <g class="wave-parallax2-{{ section.id }}">
+            <use xlink:href="#gentle-wave" x="50" y="0" fill="currentColor"></use>
+          </g>
+          <g class="wave-parallax3-{{ section.id }}">
+            <use xlink:href="#gentle-wave" x="50" y="9" fill="currentColor"></use>
+          </g>
+          <g class="wave-parallax4-{{ section.id }}">
+            <use xlink:href="#gentle-wave" x="50" y="6" fill="currentColor"></use>
+          </g>
+        </svg>
+      </div>
+    </div>
+</div>
+
+{% schema %}
+  {
+    "name": "SS - Wave #2",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Wave Settings"
+      },
+      {
+        "type": "range",
+        "id": "wave_height",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "unit": "px",
+        "label": "Wave Height",
+        "default": 120
+      },
+      {
+        "type": "range",
+        "id": "wave_height_mobile",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "unit": "px",
+        "label": "Wave Height - Mobile",
+        "default": 80
+      },
+      {
+        "type": "checkbox",
+        "id": "wave_animation",
+        "label": "Wave Animation",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "wave_rotate",
+        "label": "Wave Rotate"
+      },
+      {
+        "type": "header",
+        "content": "Section Colors"
+      },
+      {
+        "type": "color",
+        "label": "Wave Color",
+        "id": "wave_color",
+        "default": "#121212"
+      },
+      {
+        "type": "color",
+        "label": "Section background",
+        "id": "background_color",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color_background",
+        "id": "background_gradient",
+        "label": "Section background gradient"
+      },
+      {
+        "type": "color",
+        "label": "Border",
+        "id": "border_color",
+        "default": "#000000"
+      },
+      {
+        "type": "header",
+        "content": "Section margin (outside)"
+      },
+      {
+        "type": "range",
+        "id": "margin_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "Margin top",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "margin_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "Margin bottom",
+        "default": 0
+      },
+      {
+        "type": "header",
+        "content": "Section padding (inside)"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding top",
+        "default": 0
+      },
+      {
+         "type": "range",
+         "id": "padding_bottom",
+         "min": 0,
+         "max": 100,
+         "step": 4,
+         "unit": "px",
+         "label": "Padding bottom",
+         "default": 0
+      },
+      {
+        "type": "range",
+        "id": "padding_horizontal",
+        "min": 0,
+        "max": 30,
+        "step": 1,
+        "unit": "rem",
+        "label": "Padding sides",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "padding_horizontal_mobile",
+        "min": 0,
+        "max": 15,
+        "step": 0.5,
+        "unit": "rem",
+        "label": "Padding sides mobile",
+        "default": 0
+      },
+      {
+        "type": "header",
+        "content": "Section Settings"
+      },
+      {
+        "type": "checkbox",
+        "id": "full_width",
+        "label": "Full Width",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "content_width",
+        "min": 0,
+        "max": 400,
+        "step": 10,
+        "unit": "rem",
+        "label": "Section content width",
+        "default": 120
+      },
+      {
+        "type": "range",
+        "id": "border_thickness",
+        "min": 0,
+        "max": 50,
+        "step": 1,
+        "unit": "px",
+        "label": "Border thickness",
+        "default": 0
+      }
+    ],
+    "presets": [
+      {
+        "name": "SS - Wave #2"
+      }
+    ]
+  }
+{% endschema %}

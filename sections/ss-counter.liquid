@@ -1,0 +1,933 @@
+<link href="https://unpkg.com/@pqina/flip/dist/flip.min.css" rel="stylesheet">
+{%- liquid 
+  assign padding_horizontal = section.settings.padding_horizontal
+  assign padding_horizontal_mobile = section.settings.padding_horizontal_mobile
+  assign padding_top = section.settings.padding_top
+  assign padding_bottom = section.settings.padding_bottom
+  assign border_color = section.settings.border_color
+  assign border_thickness = section.settings.border_thickness
+  assign margin_top = section.settings.margin_top
+  assign margin_bottom = section.settings.margin_bottom
+  assign background_color = section.settings.background_color
+  assign background_gradient = section.settings.background_gradient
+  assign full_width = section.settings.full_width
+  assign content_width = section.settings.content_width
+
+  assign heading = section.settings.heading
+  assign heading_size = section.settings.heading_size
+  assign heading_size_mobile = section.settings.heading_size_mobile
+  assign heading_color = section.settings.heading_color
+  assign heading_custom = section.settings.heading_custom
+  assign heading_font = section.settings.heading_font
+  assign heading_height = section.settings.heading_height
+  assign heading_align = section.settings.heading_align
+
+  assign counter_mt = section.settings.counter_mt
+  assign counter_delay = section.settings.counter_delay
+  assign counter_custom = section.settings.counter_custom
+  assign counter_font = section.settings.counter_font
+  assign counter_card_radius = section.settings.counter_card_radius
+  assign counter_card_radius_mobile = section.settings.counter_card_radius_mobile
+
+  assign card_bg_color = section.settings.card_bg_color
+  assign card_text_color = section.settings.card_text_color
+
+  assign text = section.settings.text
+  assign text_size = section.settings.text_size
+  assign text_size_mobile = section.settings.text_size_mobile
+  assign text_color = section.settings.text_color
+  assign text_custom = section.settings.text_custom
+  assign text_font = section.settings.text_font
+  assign text_height = section.settings.text_height
+  assign text_align = section.settings.text_align
+  assign text_mt = section.settings.text_mt
+
+  assign button = section.settings.button
+  assign button_size = section.settings.button_size
+  assign button_size_mobile = section.settings.button_size_mobile
+  assign button_color = section.settings.button_color
+  assign button_hover_color = section.settings.button_hover_color
+  assign button_custom = section.settings.button_custom
+  assign button_font = section.settings.button_font
+  assign button_height = section.settings.button_height
+  assign button_align = section.settings.button_align
+  assign button_url = section.settings.button_url
+  assign button_mt = section.settings.button_mt
+  assign button_padding_vertical = section.settings.button_padding_vertical
+  assign button_padding_horizontal = section.settings.button_padding_horizontal
+  assign button_radius = section.settings.button_radius
+  assign button_border_thickness = section.settings.button_border_thickness
+  assign button_border_color = section.settings.button_border_color
+  assign button_border_hover_color = section.settings.button_border_hover_color
+  assign button_bg_color = section.settings.button_bg_color
+  assign button_bg_hover_color = section.settings.button_bg_hover_color
+-%}
+
+{%- style -%}
+
+  {{  heading_font | font_face: font_display: 'swap' }}
+  {{  text_font | font_face: font_display: 'swap' }}
+  {{  button_font | font_face: font_display: 'swap' }}
+  {{  counter_font | font_face: font_display: 'swap' }}
+  
+  .section-{{ section.id }} {
+    border-top: solid {{ border_color }} {{ border_thickness }}px;
+    border-bottom: solid {{ border_color }} {{ border_thickness }}px;
+    margin-top: {{ margin_top | times: 0.75 | round: 0 }}px;
+    margin-bottom: {{ margin_bottom | times: 0.75 | round: 0 }}px;
+  }
+  
+  .section-{{ section.id }}-settings {
+    max-width: {{ content_width }}rem;
+    margin: 0 auto;
+    padding-top: {{ padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ padding_bottom | times: 0.75 | round: 0 }}px;
+    padding-left: {{ padding_horizontal_mobile }}rem;
+    padding-right: {{ padding_horizontal_mobile }}rem;
+  }
+
+  .counter-heading-{{ section.id }} {
+    margin: 0;
+    font-size: {{ heading_size_mobile }}px;
+    color: {{ heading_color }};
+    line-height: {{ heading_height }}%;
+    text-transform: unset;
+    text-align: {{ heading_align }};
+  }
+
+  .counter-text-{{ section.id }} {
+    margin: 0;
+    margin-top: {{ text_mt | times: 0.75 | round: 0 }}px;
+    font-size: {{ text_size_mobile }}px;
+    color: {{ text_color }};
+    line-height: {{ text_height }}%;
+    text-transform: unset;
+    text-align: {{ text_align }};
+  }
+
+  .counter-btn-{{ section.id }} {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: fit-content;
+    margin: 0;
+    margin-top: {{ button_mt | times: 0.75 | round: 0 }}px;
+    font-size: {{ button_size_mobile }}px;
+    color: {{ button_color }};
+    line-height: {{ button_height }}%;
+    text-transform: unset;
+    text-decoration: none;
+    padding: {{ button_padding_vertical | times: 0.75 | round: 0 }}px {{ button_padding_horizontal | times: 0.75 | round: 0 }}px;
+    border-radius: {{ button_radius }}px;
+    border: {{ button_border_thickness }}px solid {{ button_border_color }};
+    background-color: {{ button_bg_color }};
+    transition: all 0.25s ease 0s;
+  }
+
+  .counter-btn-{{ section.id }}:hover {
+    color: {{ button_hover_color }};
+    border: {{ button_border_thickness }}px solid {{ button_border_hover_color }};
+    background-color: {{ button_bg_hover_color }};
+    transition: all 0.25s ease 0s;
+  }
+
+  .counter-tick-{{ section.id }} {
+    margin-top: {{ counter_mt | times: 0.75 | round: 0 }}px;
+  }
+
+  .counter-tick-{{ section.id }} .tick-flip-panel {
+    background-color: {{ card_bg_color }};
+    color: {{ card_text_color }};
+  }
+
+  .tick .tick-credits {
+    display: none !important;
+  }
+  
+  .tick-char {
+    width:1.5em;
+  } 
+  
+  .tick-text-inline {
+    display:inline-block;text-align:center;min-width:1em;
+  }
+  
+  .tick-flip {
+     border-radius: {{ counter_card_radius_mobile }}px !important; 
+  }
+
+  .preview-counter-{{ section.id }} {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+  }
+
+  .preview-counter-{{ section.id }}.hide-preview {
+    display: none;
+  }
+
+  .preview-counter-char-{{ section.id }} {
+    flex: 1 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1/1;
+    background-color: {{ card_bg_color }};
+    color: {{ card_text_color }};
+    border-radius: {{ counter_card_radius_mobile }}px !important;
+    font-size: 20px;
+  }
+  
+  @media(min-width: 1024px) {
+
+    .section-{{ section.id }} {
+      margin-top: {{ margin_top }}px;
+      margin-bottom: {{ margin_bottom }}px;
+    }
+    
+    .section-{{ section.id }}-settings {
+      padding: 0 5rem;
+      padding-top: {{ padding_top }}px;
+      padding-bottom: {{ padding_bottom }}px;
+      padding-left: {{ padding_horizontal }}rem;
+      padding-right: {{ padding_horizontal }}rem;
+    }
+
+    .counter-heading-{{ section.id }} {
+      font-size: {{ heading_size }}px;
+    }
+
+    .counter-tick-{{ section.id }} {
+      margin-top: {{ counter_mt }}px;
+    }
+
+    .counter-text-{{ section.id }} {
+      margin-top: {{ text_mt }}px;
+      font-size: {{ text_size }}px;
+    }
+
+    .counter-btn-{{ section.id }} {
+      margin-top: {{ button_mt }}px;
+      padding: {{ button_padding_vertical }}px {{ button_padding_horizontal }}px;
+      font-size: {{ button_size }}px;
+    }
+
+    .tick-flip {
+       border-radius: {{ counter_card_radius }}px !important; 
+    }
+
+    .preview-counter-char-{{ section.id }} {
+      font-size: 70px;
+      border-radius: {{ counter_card_radius }}px !important;
+    }
+  }
+  
+{%- endstyle -%}
+
+{% unless full_width %}
+  <style>
+    .section-{{ section.id }}-settings {
+      max-width: {{ content_width }}rem;
+    }
+  </style>
+{% endunless %}
+
+{% if heading_custom %}
+  <style>
+    .counter-heading-{{ section.id }} {
+      font-family: {{ heading_font.family }}, {{ heading_font.fallback_families }};
+      font-weight: {{ heading_font.weight }};
+      font-style: {{ heading_font.style }};
+    }
+  </style>
+{% endif %}
+
+{% if text_custom %}
+  <style>
+    .counter-text-{{ section.id }} {
+      font-family: {{ text_font.family }}, {{ text_font.fallback_families }};
+      font-weight: {{ text_font.weight }};
+      font-style: {{ text_font.style }};
+    }
+  </style>
+{% endif %}
+
+{% if button_custom %}
+  <style>
+    .counter-btn-{{ section.id }} {
+      font-family: {{ button_font.family }}, {{ button_font.fallback_families }};
+      font-weight: {{ button_font.weight }};
+      font-style: {{ button_font.style }};
+    }
+  </style>
+{% endif %}
+
+{% if button_align == "center" %}
+  <style>
+    .counter-btn-{{ section.id }} {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+{% elsif button_align == "right" %}
+  <style>
+    .counter-btn-{{ section.id }} {
+      margin-left: auto;
+    }
+  </style>
+{% endif %}
+
+{% if counter_custom %}
+  <style>
+    .counter-tick-{{ section.id }} {
+      font-family: {{ counter_font.family }}, {{ counter_font.fallback_families }};
+      font-weight: {{ counter_font.weight }};
+      font-style: {{ counter_font.style }};
+    }
+    @media(min-width: 1024px) {
+     .tick-flip-panel-text-wrapper {
+        margin-top: 5px;
+      } 
+    }
+  </style>
+{% endif %}
+
+<div class="section-{{ section.id }} counter-{{ section.id }}" style="background-color:{{ background_color }}; background-image: {{ background_gradient }};">
+    <div class="section-{{ section.id }}-settings">
+      {% if heading != blank %}
+        <h2 class="counter-heading-{{ section.id }}">{{ heading }}</h2>
+      {% endif %}
+      <div class="tick counter-tick-{{ section.id }}" data-did-init="handleTickInit">
+
+          <div data-repeat="true" data-layout="horizontal fit" data-transform="upper -> split -> delay(random, 100, 150)">
+      
+              <span data-view="flip" data-transform="ascii -> arrive -> round -> char(^[A-Za-z]*$)" class="tick-char"></span>
+      
+          </div>
+      
+      </div>
+      <div class="preview-counter-{{ section.id }}">
+        <div class="preview-counter-char-{{ section.id }}">C</div>
+        <div class="preview-counter-char-{{ section.id }}">O</div>
+        <div class="preview-counter-char-{{ section.id }}">U</div>
+        <div class="preview-counter-char-{{ section.id }}">N</div>
+        <div class="preview-counter-char-{{ section.id }}">T</div>
+        <div class="preview-counter-char-{{ section.id }}">E</div>
+        <div class="preview-counter-char-{{ section.id }}">R</div>
+      </div>
+      {% if text != blank %}
+        <p class="counter-text-{{ section.id }}">{{ text }}</p>
+      {% endif %}
+      {% if button != blank %}
+        <a href="{{ button_url }}" class="counter-btn-{{ section.id }}">{{ button }}</a>
+      {% endif %}
+    </div>
+</div>
+
+<script src="https://unpkg.com/@pqina/flip/dist/flip.min.js"></script>
+
+{% assign global_max = 0 %}
+{% for block in section.blocks %}
+    {% assign text_length = block.settings.text | split: '' %}
+    {% assign text_length = block.settings.text | size %}
+    {% if text_length > global_max %}
+        {% assign global_max = text_length %}
+    {% endif %}
+{% endfor %}
+
+<script>
+  function handleTickInit(tick) {
+
+        var rotation = [
+          {% for block in section.blocks %}{% assign text_length = block.settings.text | split: '' %}{% assign text_length = block.settings.text | size %}{% assign count = global_max | minus: text_length %}{% if forloop.last %}'{{ block.settings.text }}{% for i in (1..count) %}{{ ' ' }}{% endfor %}'{% else %}'{{block.settings.text}}{% for i in (1..count) %}{{ ' ' }}{% endfor %}',{% endif %}{% endfor %}
+        ];
+
+        // current rotation index (we start at the first word)
+        var index = 0;
+
+        Tick.helper.interval(function(){
+
+            tick.value = rotation[index];
+
+            index = index < rotation.length - 1 ? index + 1 : 0;
+
+        }, {{ counter_delay | times: 1000 }});
+
+    }
+  
+  function initCounter() {
+    document.querySelector('.preview-counter-{{ section.id }}').classList.add('hide-preview');
+    handleTickInit(document.querySelector('.counter-tick-{{ section.id }}'));  
+  }
+
+  document.addEventListener('DOMContentLoaded', initCounter);
+  
+  if (Shopify.designMode) {
+     document.addEventListener('shopify:section:unload', initCounter);
+     document.addEventListener('shopify:section:load', initCounter);
+  }
+  
+</script>
+
+{% schema %}
+  {
+    "name": "SS - Counter",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Heading"
+      },
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Our best seller"
+      },
+      {
+        "type": "checkbox",
+        "id": "heading_custom",
+        "label": "Use Custom Font",
+        "default": false
+      },
+      {
+        "type": "font_picker",
+        "id": "heading_font",
+        "label": "Heading Font Family",
+        "default": "josefin_sans_n4"
+      },
+      {
+        "type": "range",
+        "id": "heading_size",
+        "min": 0,
+        "max": 72,
+        "step": 2,
+        "unit": "px",
+        "label": "Heading Size",
+        "default": 48
+      },
+      {
+        "type": "range",
+        "id": "heading_size_mobile",
+        "min": 0,
+        "max": 72,
+        "step": 2,
+        "unit": "px",
+        "label": "Heading Size - Mobile",
+        "default": 32
+      },
+      {
+        "type": "range",
+        "id": "heading_height",
+        "min": 50,
+        "max": 200,
+        "step": 10,
+        "unit": "%",
+        "label": "Heading Line Height",
+        "default": 130
+      },
+      {
+        "type": "select",
+        "id": "heading_align",
+        "label": "Heading Text Align",
+        "default": "center",
+        "options": [
+          {
+            "label": "Left",
+            "value": "left"
+          },
+          {
+            "label": "Center",
+            "value": "center"
+          },
+          {
+            "label": "Right",
+            "value": "right"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Counter Settings"
+      },
+      {
+        "type": "range",
+        "id": "counter_mt",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "Counter Margin top",
+        "default": 32
+      },
+      {
+        "type": "range",
+        "id": "counter_delay",
+        "min": 1,
+        "max": 10,
+        "step": 0.1,
+        "unit": "s",
+        "label": "Counter Delay Before Change",
+        "default": 3.5
+      },
+      {
+        "type": "range",
+        "id": "counter_card_radius",
+        "min": 0,
+        "max": 50,
+        "step": 2,
+        "unit": "px",
+        "label": "Counter Card Border Radius",
+        "default": 16
+      },
+      {
+        "type": "range",
+        "id": "counter_card_radius_mobile",
+        "min": 0,
+        "max": 50,
+        "step": 2,
+        "unit": "px",
+        "label": "Counter Card Border Radius - Mobile",
+        "default": 10
+      },
+      {
+        "type": "checkbox",
+        "id": "counter_custom",
+        "label": "Use Custom Font",
+        "default": true
+      },
+      {
+        "type": "font_picker",
+        "id": "counter_font",
+        "label": "Counter Font Family",
+        "default": "montserrat_n8"
+      },
+      {
+        "type": "header",
+        "content": "Text"
+      },
+      {
+        "type": "text",
+        "id": "text",
+        "label": "Text",
+        "default": "Gear up for the busiest season of the year with the flip-flap, put-your-business-on-the-map centerpiece."
+      },
+      {
+        "type": "checkbox",
+        "id": "text_custom",
+        "label": "Use Custom Font",
+        "default": false
+      },
+      {
+        "type": "font_picker",
+        "id": "text_font",
+        "label": "Text Font Family",
+        "default": "josefin_sans_n4"
+      },
+      {
+        "type": "range",
+        "id": "text_size",
+        "min": 0,
+        "max": 72,
+        "step": 2,
+        "unit": "px",
+        "label": "Text Size",
+        "default": 22
+      },
+      {
+        "type": "range",
+        "id": "text_size_mobile",
+        "min": 0,
+        "max": 72,
+        "step": 2,
+        "unit": "px",
+        "label": "Text Size - Mobile",
+        "default": 20
+      },
+      {
+        "type": "range",
+        "id": "text_height",
+        "min": 50,
+        "max": 200,
+        "step": 10,
+        "unit": "%",
+        "label": "Text Line Height",
+        "default": 130
+      },
+      {
+        "type": "select",
+        "id": "text_align",
+        "label": "Text Align",
+        "default": "center",
+        "options": [
+          {
+            "label": "Left",
+            "value": "left"
+          },
+          {
+            "label": "Center",
+            "value": "center"
+          },
+          {
+            "label": "Right",
+            "value": "right"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "text_mt",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "Text Margin top",
+        "default": 32
+      },
+      {
+        "type": "header",
+        "content": "Button"
+      },
+      {
+        "type": "text",
+        "id": "button",
+        "label": "Button",
+        "default": "Shop now"
+      },
+      {
+        "type": "url",
+        "id": "button_url",
+        "label": "Button URL"
+      },
+      {
+        "type": "checkbox",
+        "id": "button_custom",
+        "label": "Use Custom Font",
+        "default": false
+      },
+      {
+        "type": "font_picker",
+        "id": "button_font",
+        "label": "Button Font Family",
+        "default": "josefin_sans_n4"
+      },
+      {
+        "type": "range",
+        "id": "button_size",
+        "min": 0,
+        "max": 72,
+        "step": 2,
+        "unit": "px",
+        "label": "Button Size",
+        "default": 20
+      },
+      {
+        "type": "range",
+        "id": "button_size_mobile",
+        "min": 0,
+        "max": 72,
+        "step": 2,
+        "unit": "px",
+        "label": "Button Size - Mobile",
+        "default": 18
+      },
+      {
+        "type": "range",
+        "id": "button_height",
+        "min": 50,
+        "max": 200,
+        "step": 10,
+        "unit": "%",
+        "label": "Button Line Height",
+        "default": 130
+      },
+      {
+        "type": "select",
+        "id": "button_align",
+        "label": "Button Text Align",
+        "default": "center",
+        "options": [
+          {
+            "label": "Left",
+            "value": "left"
+          },
+          {
+            "label": "Center",
+            "value": "center"
+          },
+          {
+            "label": "Right",
+            "value": "right"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "button_mt",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "Button Margin Top",
+        "default": 16
+      },
+      {
+        "type": "range",
+        "id": "button_padding_vertical",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "Button Padding Vertical",
+        "default": 16
+      },
+      {
+         "type": "range",
+         "id": "button_padding_horizontal",
+         "min": 0,
+         "max": 100,
+         "step": 4,
+         "unit": "px",
+         "label": "Button Padding Horizontal",
+         "default": 40
+      },
+      {
+         "type": "range",
+         "id": "button_radius",
+         "min": 0,
+         "max": 100,
+         "step": 2,
+         "unit": "px",
+         "label": "Button Border Radius",
+         "default": 100
+      },
+      {
+         "type": "range",
+         "id": "button_border_thickness",
+         "min": 0,
+         "max": 10,
+         "step": 1,
+         "unit": "px",
+         "label": "Button Border Thickness",
+         "default": 0
+      },
+      {
+        "type": "header",
+        "content": "Section Colors"
+      },
+      {
+        "type": "color",
+        "label": "Heading Color",
+        "id": "heading_color",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "label": "Card Background Color",
+        "id": "card_bg_color",
+        "default": "#333232"
+      },
+      {
+        "type": "color",
+        "label": "Card Text Color",
+        "id": "card_text_color",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "label": "Text Color",
+        "id": "text_color",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "label": "Button Color",
+        "id": "button_color",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "label": "Button Hover Color",
+        "id": "button_hover_color",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "label": "Button Background Color",
+        "id": "button_bg_color",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "label": "Button Background Hover Color",
+        "id": "button_bg_hover_color",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "label": "Button Border Color",
+        "id": "button_border_color",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "label": "Button Border Hover Color",
+        "id": "button_border_hover_color",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "label": "Section background",
+        "id": "background_color",
+        "default": "#4BFE85"
+      },
+      {
+        "type": "color_background",
+        "id": "background_gradient",
+        "label": "Section background gradient"
+      },
+      {
+        "type": "color",
+        "label": "Border",
+        "id": "border_color",
+        "default": "#000000"
+      },
+      {
+        "type": "header",
+        "content": "Section margin (outside)"
+      },
+      {
+        "type": "range",
+        "id": "margin_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "Margin top",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "margin_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "Margin bottom",
+        "default": 0
+      },
+      {
+        "type": "header",
+        "content": "Section padding (inside)"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding top",
+        "default": 100
+      },
+      {
+         "type": "range",
+         "id": "padding_bottom",
+         "min": 0,
+         "max": 100,
+         "step": 4,
+         "unit": "px",
+         "label": "Padding bottom",
+         "default": 100
+      },
+      {
+        "type": "range",
+        "id": "padding_horizontal",
+        "min": 0,
+        "max": 30,
+        "step": 1,
+        "unit": "rem",
+        "label": "Padding sides",
+        "default": 5
+      },
+      {
+        "type": "range",
+        "id": "padding_horizontal_mobile",
+        "min": 0,
+        "max": 15,
+        "step": 0.5,
+        "unit": "rem",
+        "label": "Padding sides mobile",
+        "default": 1.5
+      },
+      {
+        "type": "header",
+        "content": "Section Settings"
+      },
+      {
+        "type": "checkbox",
+        "id": "full_width",
+        "label": "Full Width",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "content_width",
+        "min": 0,
+        "max": 400,
+        "step": 10,
+        "unit": "rem",
+        "label": "Section content width",
+        "default": 120
+      },
+      {
+        "type": "range",
+        "id": "border_thickness",
+        "min": 0,
+        "max": 50,
+        "step": 1,
+        "unit": "px",
+        "label": "Border thickness",
+        "default": 0
+      }
+    ],
+    "blocks": [
+      {
+        "type": "word",
+        "name": "Word",
+        "settings": [
+          {
+            "type": "text",
+            "label": "Word For Counter",
+            "id": "text"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "SS - Counter",
+        "blocks": [
+          {
+            "type": "word",
+            "settings": {
+              "text": "Counter"
+            }
+          },
+          {
+            "type": "word",
+            "settings": {
+              "text": "Is Back"
+            }
+          },
+          {
+            "type": "word",
+            "settings": {
+              "text": "Shopify"
+            }
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

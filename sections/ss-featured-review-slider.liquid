@@ -1,0 +1,170 @@
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+>
+{% style %}
+  [data-review-quote-slider-target] p {
+    margin: 0;
+    text-align: center;
+  }
+  [data-review-quote-slider-target] .swiper {
+    padding-bottom: 60px;
+    --swiper-pagination-color: {{ section.settings.pagination_color }};
+    --swiper-pagination-bullet-inactive-color: {{ section.settings.pagination_color }};
+    color: {{ section.settings.text_color }};
+    font-size: {{ section.settings.font_size }}px;
+  }
+  [data-review-quote-slider-target] .custom-swiper-container {
+    background-color: {{ section.settings.bg_color }};
+    border-radius: {{ section.settings.border_radius }}px;
+    padding: 3rem 3rem 1.5rem;
+  }
+{% endstyle %}
+
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"
+></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const template = document.querySelector('[data-review-quote-slider]');
+    const target = document.querySelector('[data-review-quote-slider-target]');
+    if (target) {
+      target.appendChild(template.content.cloneNode(true));
+      const swiperEl = target.querySelector('.swiper');
+      new Swiper(swiperEl, {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        loop: true,
+        autoplay: {
+          delay: 6000,
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        speed: 1000,
+      });
+    }
+  });
+</script>
+
+{%- comment -%}
+  Add this to target location:
+  <div data-review-quote-slider-target></div>
+{%- endcomment -%}
+
+<template data-review-quote-slider>
+  <div class="custom-swiper-container {{ section.settings.custom_classes }}">
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+          <div class="swiper-slide">
+            {{ block.settings.quote }}
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</template>
+
+{% schema %}
+{
+  "name": "SS - Review Slider",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "example",
+      "label": "Target example",
+      "default": "<div data-review-quote-slider-target><\/div>",
+      "info": "Copy this code into the target area you want to display the slider."
+    },
+    {
+      "type": "color",
+      "id": "pagination_color",
+      "label": "Pagination Color",
+      "default": "#db877b"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#f4d9d5"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#d87e71"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Border radius",
+      "unit": "px",
+      "min": 0,
+      "max": 99,
+      "step": 1,
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "label": "Font size",
+      "unit": "px",
+      "min": 8,
+      "max": 40,
+      "step": 1,
+      "default": 16
+    },
+    {
+      "type": "text",
+      "id": "custom_classes",
+      "label": "Custom classes"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "quote",
+      "name": "Quote",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "quote",
+          "label": "Review Quote",
+          "info": "Enter the review quote here."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "category": "Reviews",
+      "name": "SS - Review slider",
+      "blocks": [
+        {
+          "type": "quote",
+          "settings": {
+            "quote": "<p>\"<\/p><p>This rug is such good quality and makes me so happy every time I look at it.  I'm using this one for a top cover over my bedspread. It's a perfect  match for my room and linen. I have another that I use as a throw  for the lounge and a picnic rug! In LOVE.<\/p><p>- Barbara W.<\/p>"
+          }
+        },
+        {
+          "type": "quote",
+          "settings": {
+            "quote": "<p>\"<\/p><p>The postage was incredibly quick and the quality and colours far exceeded what I thought. The pics don't do them justice. Truly unique rugs that I doubt will date anytime soon. I would recommend - beautiful rug and great customer service. <\/p><p>- Tanya E.<\/p>"
+          }
+        },
+        {
+          "type": "quote",
+          "settings": {
+            "quote": "<p>\"<\/p><p>My husband argued with me saying we didn’t need a new blanket. Once we received this one, he quickly changed his tune. It’s cozy, soft and warm. I love the design and boho vibe it adds to our home. High quality product at an affordable price.<\/p><p>- Bebe H.<\/p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -42,7 +42,7 @@
           "type": "button",
           "settings": {
             "button": "SHOP NOW",
-            "button_url": "",
+            "button_url": "https:\/\/mydaub.com\/collections",
             "button_custom": false,
             "button_font": "josefin_sans_n4",
             "button_size": 14,

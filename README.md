@@ -1,17 +1,16 @@
-# DABB: Your All-in-One Social App
+# DAUB (E-commerce Shopify Website)
 
-**Description:**
-DABB is a comprehensive social media platform designed for sharing moments, connecting with friends, and exploring global trends. It offers features like personalized feeds, global insights, bucket lists, and reward coins.
+**Project Overview:**
+DABB is an online store specializing in men's t-shirts. We offer a curated collection of high-quality tees designed to cater to various styles and preferences.
 
 ## Features
 
-* **Discover Feeds:** Explore content from friends and discover global trends.
+* **Home Page:** Explore latest collection and discover global trends.
 * **Seamless Sharing:** Share experiences through a personalized feed.
-* **Global Insights:** Stay updated on global news and conversations.
 * **Personalized Feeds:** Tailor content based on interests.
 * **Bucket Lists:** Create private lists for selective sharing.
 * **Reward Coins:** Earn and redeem coins for rewards.
-* **Cross-Platform Compatibility:** Access DABB on most devices.
+* **Cross-Platform Compatibility:** Access DAUB on most devices because is a website.
 * **Private Sharing:** Share links without revealing your profile.
 * **Seamless Payments:** Make payments without QR codes or phone numbers.
 

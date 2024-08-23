@@ -283,7 +283,7 @@
           "background": "#333333",
           "background_gradient": "linear-gradient(54deg, rgba(102, 102, 102, 1) 14%, rgba(54, 54, 54, 1) 85%)",
           "text": "#ffffff",
-          "button": "#000000",
+          "button": "#ffffff",
           "button_label": "#000000",
           "secondary_button_label": "#ffffff",
           "shadow": "#333333"

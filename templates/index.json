@@ -468,9 +468,9 @@
         "image_ratio": "portrait",
         "columns_desktop": 4,
         "color_scheme": "scheme-2",
-        "show_view_all": false,
+        "show_view_all": true,
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
+        "swipe_on_mobile": true,
         "padding_top": 20,
         "padding_bottom": 20
       }

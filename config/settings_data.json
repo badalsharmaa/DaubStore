@@ -114,9 +114,9 @@
     "brand_description": "<p>Assortment you appreciate and rely on. Blend of superior and varied designs.<\/p>",
     "brand_image": "shopify:\/\/shop_images\/Final_2_wb.svg",
     "brand_image_width": 100,
-    "social_facebook_link": "",
-    "social_instagram_link": "",
-    "social_youtube_link": "",
+    "social_facebook_link": "https:\/\/www.instagram.com\/daub_clothing\/",
+    "social_instagram_link": "https:\/\/www.instagram.com\/daub_clothing\/",
+    "social_youtube_link": "https:\/\/www.instagram.com\/daub_clothing\/",
     "social_tiktok_link": "",
     "social_twitter_link": "",
     "social_snapchat_link": "",
@@ -149,8 +149,8 @@
         "type": "marquee",
         "settings": {
           "text": "",
-          "colorBackground": "#ffffff",
-          "colorText": "#000000",
+          "colorBackground": "#000000",
+          "colorText": "#ffffff",
           "link": ""
         }
       }
@@ -251,7 +251,7 @@
           "background_gradient": "",
           "text": "#262626",
           "button": "#8e44ad",
-          "button_label": "#ffffff",
+          "button_label": "#eff0f5",
           "secondary_button_label": "#402878",
           "shadow": "#6a379e"
         }

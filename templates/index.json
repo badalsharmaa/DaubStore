@@ -254,97 +254,6 @@
         "border_thickness": 0
       }
     },
-    "ss_feature_1_Fim3FG": {
-      "type": "ss-feature-1",
-      "blocks": {
-        "image_k4dGzn": {
-          "type": "image",
-          "settings": {
-            "feature_title": "Free Shipping",
-            "feature_text": "Order today, receive tomorrow",
-            "feature_url": "",
-            "hide_image": false
-          }
-        },
-        "image_yqzxBP": {
-          "type": "image",
-          "settings": {
-            "feature_title": "Price-match guarantee",
-            "feature_text": "Safe money when ordering with us",
-            "feature_url": "",
-            "hide_image": false
-          }
-        },
-        "image_ahah34": {
-          "type": "image",
-          "settings": {
-            "feature_title": "Hassle-free exchange",
-            "feature_text": "Receive a slip for exchanges",
-            "feature_url": "",
-            "hide_image": false
-          }
-        },
-        "image_iwD6wU": {
-          "type": "image",
-          "settings": {
-            "feature_title": "5.0 Google Reviews",
-            "feature_text": "Customer satisfaction #1 priority",
-            "feature_url": "",
-            "hide_image": false
-          }
-        }
-      },
-      "block_order": [
-        "image_k4dGzn",
-        "image_yqzxBP",
-        "image_ahah34",
-        "image_iwD6wU"
-      ],
-      "settings": {
-        "feature_row": 4,
-        "feature_row_mobile": 2,
-        "feature_gap": 20,
-        "feature_gap_mobile": 20,
-        "feature_padding_vertical": 20,
-        "feature_padding_horizontal": 0,
-        "feature_radius": 16,
-        "feature_border_thickness": 0,
-        "feature_shadow": false,
-        "feature_heading_custom": false,
-        "feature_heading_font": "josefin_sans_n4",
-        "feature_heading_size": 14,
-        "feature_heading_size_mobile": 12,
-        "feature_heading_height": 130,
-        "feature_heading_mt": 8,
-        "feature_text_custom": false,
-        "feature_text_font": "josefin_sans_n4",
-        "feature_text_size": 12,
-        "feature_text_size_mobile": 12,
-        "feature_text_height": 130,
-        "feature_text_mt": 4,
-        "feature_icon_size": 42,
-        "feature_icon_size_mobile": 42,
-        "feature_bg": "#ffffff",
-        "feature_border_color": "#000000",
-        "feature_shadow_color": "#000000",
-        "feature_heading_color": "#000000",
-        "feature_text_color": "#000000",
-        "feature_icon_color": "#000000",
-        "background_color": "#ffffff",
-        "background_gradient": "",
-        "border_color": "#000000",
-        "margin_top": 0,
-        "margin_bottom": 0,
-        "padding_top": 16,
-        "padding_bottom": 16,
-        "padding_horizontal": 1,
-        "padding_horizontal_mobile": 1.5,
-        "full_width": true,
-        "content_width": 0,
-        "border_thickness": 0,
-        "lazy": true
-      }
-    },
     "featured-collection-0": {
       "type": "featured-collection",
       "settings": {
@@ -1045,6 +954,97 @@
         "accessibility_info": "Slideshow about our brand"
       }
     },
+    "ss_feature_1_Fim3FG": {
+      "type": "ss-feature-1",
+      "blocks": {
+        "image_k4dGzn": {
+          "type": "image",
+          "settings": {
+            "feature_title": "Free Shipping",
+            "feature_text": "Order today, receive tomorrow",
+            "feature_url": "",
+            "hide_image": false
+          }
+        },
+        "image_yqzxBP": {
+          "type": "image",
+          "settings": {
+            "feature_title": "Price-match guarantee",
+            "feature_text": "Safe money when ordering with us",
+            "feature_url": "",
+            "hide_image": false
+          }
+        },
+        "image_ahah34": {
+          "type": "image",
+          "settings": {
+            "feature_title": "Hassle-free exchange",
+            "feature_text": "Receive a slip for exchanges",
+            "feature_url": "",
+            "hide_image": false
+          }
+        },
+        "image_iwD6wU": {
+          "type": "image",
+          "settings": {
+            "feature_title": "5.0 Google Reviews",
+            "feature_text": "Customer satisfaction #1 priority",
+            "feature_url": "",
+            "hide_image": false
+          }
+        }
+      },
+      "block_order": [
+        "image_k4dGzn",
+        "image_yqzxBP",
+        "image_ahah34",
+        "image_iwD6wU"
+      ],
+      "settings": {
+        "feature_row": 4,
+        "feature_row_mobile": 2,
+        "feature_gap": 20,
+        "feature_gap_mobile": 20,
+        "feature_padding_vertical": 20,
+        "feature_padding_horizontal": 0,
+        "feature_radius": 16,
+        "feature_border_thickness": 0,
+        "feature_shadow": false,
+        "feature_heading_custom": false,
+        "feature_heading_font": "josefin_sans_n4",
+        "feature_heading_size": 14,
+        "feature_heading_size_mobile": 12,
+        "feature_heading_height": 130,
+        "feature_heading_mt": 8,
+        "feature_text_custom": false,
+        "feature_text_font": "josefin_sans_n4",
+        "feature_text_size": 12,
+        "feature_text_size_mobile": 12,
+        "feature_text_height": 130,
+        "feature_text_mt": 4,
+        "feature_icon_size": 42,
+        "feature_icon_size_mobile": 42,
+        "feature_bg": "#ffffff",
+        "feature_border_color": "#000000",
+        "feature_shadow_color": "#000000",
+        "feature_heading_color": "#000000",
+        "feature_text_color": "#000000",
+        "feature_icon_color": "#000000",
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "border_color": "#000000",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 16,
+        "padding_bottom": 16,
+        "padding_horizontal": 1,
+        "padding_horizontal_mobile": 1.5,
+        "full_width": true,
+        "content_width": 0,
+        "border_thickness": 0,
+        "lazy": true
+      }
+    },
     "ss_wave_2_MFXbxB": {
       "type": "ss-wave-2",
       "settings": {
@@ -1073,7 +1073,6 @@
     "ss_wave_2_gLa3Fr",
     "ss_parallax_banner_4Eq3zw",
     "ss_wave_2_L3HPVa",
-    "ss_feature_1_Fim3FG",
     "featured-collection-0",
     "ss_wave_2_nDjV6k",
     "ss_parallax_banner_64rn7d",
@@ -1088,6 +1087,7 @@
     "ss_parallax_banner_E8gwYb",
     "ss_wave_2_DHVfkE",
     "slideshow",
+    "ss_feature_1_Fim3FG",
     "ss_wave_2_MFXbxB"
   ]
 }

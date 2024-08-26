@@ -664,9 +664,9 @@
         "row_tPbyUj"
       ],
       "settings": {
-        "image_height": "medium",
+        "image_height": "small",
         "desktop_image_width": "medium",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "text_style": "body",
         "button_style": "primary",
         "desktop_content_position": "bottom",

@@ -52,6 +52,49 @@ DABB is an online store specializing in men's t-shirts. We offer a curated colle
 | **Patch 2** | Fixed account activation issue. | [Date] | Corrected backend logic for activation. |
 | ... | ... | ... | ... |
 
+# Bug Report: E-commerce Website Improvements
+
+## Home Page
+
+1. **Wishlist Redirect**: When logged out, clicking the wishlist should redirect to the login page.
+2. **Center the Logo**: The logo needs to be centered. Apply CSS styles (e.g., `text-align: center;` or `margin: 0 auto;`) to achieve this.
+3. **"Shop Now" Button**: Ensure that the "Shop Now" button opens the entire collection page. Update the button's URL accordingly.
+4. **Wishlist Option Next to Cart**: Add a wishlist icon/link next to the cart at the top. Implement redirection to the wishlist page or prompt for login.
+5. **Top Banner Styling**: Adjust the color and thickness of the top banner using CSS.
+
+## Product Page
+
+1. **Enable Wishlist**: Only show the wishlist heart icon when users are logged in.
+2. **Heart Icon Size**: Increase the size of the wishlist heart icon to match other icons.
+3. **Remove Wishlist Text**: Hide the text associated with the wishlist icon.
+
+## Login Page
+
+1. **Pop-up for Email Sent Notification and Errors**: After form submission, display a pop-up for email sent notifications and error messages.
+2. **"Sign in with Google" Option**: Enable users to sign in with their Google account.
+3. **Mark Mandatory Fields**: Add an asterisk (*) to mandatory fields on all form pages.
+4. **Redirect After Sign-In**: Redirect users to the home page after clicking "Sign in," rather than the account page.
+
+## Create Account Page
+
+1. **Email Confirmation Pop-up**: After clicking "Create Account," show a pop-up indicating that an email has been sent for confirmation. Allow login only after email confirmation.
+2. **Mark Mandatory Fields**: Mark mandatory fields with an asterisk (*) on all form pages.
+
+## Contact Page
+
+1. **Phone Number Support**: Add phone number support with a 10-digit limit check. Display an alert before submission.
+
+## Forgot Password Page
+
+1. **Reset Password Redirect**: After clicking "Reset Password," redirect users to the login page with a message: "Password has been changed."
+
+## Manage Address Page
+
+1. **Change "Province" to "State"**: Update the label for the address field.
+2. **Asterisk for Mandatory Fields**: Mark mandatory address fields with an asterisk (*).
+3. **Display Errors**: Implement validation checks for mandatory fields and display relevant error messages.
+
+
 **Note:**
 
 * Replace the placeholders with actual bug descriptions, severities, affected pages, and patch details.

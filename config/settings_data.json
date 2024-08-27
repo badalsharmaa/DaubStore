@@ -171,12 +171,6 @@
         "settings": {
         }
       },
-      "5946647744298494267": {
-        "type": "shopify:\/\/apps\/wishlist-plus\/blocks\/wishlist-app-embed\/80c3b1fc-3a8f-407e-8367-ffdeebb8b612",
-        "disabled": true,
-        "settings": {
-        }
-      },
       "17899005752291538835": {
         "type": "shopify:\/\/apps\/loadify-preloader\/blocks\/loadify-block\/a901f8d1-8a96-4e38-a7d8-fdf18b278bfc",
         "disabled": true,
@@ -234,6 +228,12 @@
       },
       "266489613607320606": {
         "type": "shopify:\/\/apps\/hook-one-tap-social-login\/blocks\/star_rating\/ea872257-c0a1-4d34-afc6-9196443edfb7",
+        "disabled": false,
+        "settings": {
+        }
+      },
+      "5946647744298494267": {
+        "type": "shopify:\/\/apps\/wishlist-plus\/blocks\/wishlist-app-embed\/80c3b1fc-3a8f-407e-8367-ffdeebb8b612",
         "disabled": false,
         "settings": {
         }

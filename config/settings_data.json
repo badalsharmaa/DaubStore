@@ -231,6 +231,12 @@
           "button_vertical_position": "lowest",
           "greeting_message": ""
         }
+      },
+      "266489613607320606": {
+        "type": "shopify:\/\/apps\/hook-one-tap-social-login\/blocks\/star_rating\/ea872257-c0a1-4d34-afc6-9196443edfb7",
+        "disabled": false,
+        "settings": {
+        }
       }
     },
     "color_schemes": {

@@ -2324,8 +2324,7 @@ input[type='checkbox'] {
 }
 
 /* Main Header Layout */
-
-/*my code*/
+/*/*my code*/
 i.icon-swym-wishlist {
 font-family: 'swym-font';
 font-style: normal;
@@ -2347,6 +2346,7 @@ display: inline;
 content: '\f004';
 }
 /*end of my code*/
+*/
 .header-wrapper {
   display: block;
   position: relative;

@@ -3571,10 +3571,12 @@ details-disclosure > details {
 
 /*my code*/
 i.icon-swym-wishlist {
-font-family: 'swym-font';
-font-style: normal;
-vertical-align: middle;
+  font-family: 'swym-font';
+  font-style: normal;
+  vertical-align: middle;
+  text-align: center; /* This line adds horizontal centering */
 }
+/* ... other styles ... */
 i.icon-swym-wishlist+span {
 vertical-align: middle;
 }

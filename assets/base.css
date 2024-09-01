@@ -2324,6 +2324,28 @@ input[type='checkbox'] {
 }
 
 /* Main Header Layout */
+
+/*my code*/
+i.icon-swym-wishlist {
+font-family: 'swym-font';
+font-style: normal;
+vertical-align: middle;
+}
+i.icon-swym-wishlist+span {
+vertical-align: middle;
+}
+i.icon-swym-wishlist:after {
+content: '';
+font-size: 130%;
+line-height: 18px;
+text-align: center;
+display: inline;
+}
+/*content rendered after swym is ready to avoid showing block/invalid chars*/
+.swym-ready i.icon-swym-wishlist:after {
+content: '\f004';
+}
+/*end of my code*/
 .header-wrapper {
   display: block;
   position: relative;

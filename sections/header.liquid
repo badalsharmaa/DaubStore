@@ -286,9 +286,9 @@
             {% render block %}
         {%- endcase -%}
       {%- endfor -%}
-      <a href="#swym-wishlist" class="swym-wishlist">
-      <i aria-hidden="true" focusable="false" role="presentation" class="fa-light fa-heart" style="color: #ffffff;"></i>
-      </a>
+<a href="#swym-wishlist" class="swym-wishlist">
+  <i aria-hidden="true" focusable="false" role="presentation" class="fa fa-heart"></i>
+</a>
       <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
         {%- liquid
           if cart == empty

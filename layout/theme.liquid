@@ -511,7 +511,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
     </script>
 
-    {% if settings.wishlist-floating-button-position' %}
+    {% if settings.wishlist-floating-button-position %}
       <a href="/pages/wishlist" class="button-floating">
         <svg width="35px" height="35px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <rect x="0" fill="none" width="24" height="24"/>
@@ -597,3 +597,13 @@ document.addEventListener('DOMContentLoaded', function () {
     {%- endif -%}
   </body>
 </html>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% if settings.wishlist-floating-button-position' %}"
+  to: "{% if settings.wishlist-floating-button-position %}"
+  position: 27274..27325
+{% endcomment %}
